@@ -1,0 +1,10 @@
+scheme(ENV["SCHEME"] || "App")
+export_method("app-store")
+
+output_directory("./build")
+output_name("App")
+
+clean(true)
+include_bitcode(false)
+
+xcargs("-allowProvisioningUpdates")
