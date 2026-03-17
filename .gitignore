@@ -3,6 +3,7 @@
 .env.local
 
 # Fastlane
+fastlane/README.md
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
