@@ -87,7 +87,10 @@ All sensitive values live in `.env` (never committed). See [`.env.example`](.env
 | `ITC_TEAM_ID` | App Store Connect Team ID |
 | `MATCH_GIT_URL` | Git repo URL for match certificates |
 | `MATCH_PASSWORD` | Encryption password for match |
+| `XCODEPROJ` | Xcode project file (e.g., `App.xcodeproj`) |
+| `EXPORT_METHOD` | Export method (default: `app-store`) |
 | `SLACK_WEBHOOK_URL` | Slack incoming webhook for notifications |
+| `FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD` | App-specific password for Apple ID |
 | `CI` | Set to `true` in CI environments |
 
 ## Lanes in Detail
