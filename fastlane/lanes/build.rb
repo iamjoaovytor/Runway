@@ -4,11 +4,11 @@ platform :ios do
   lane :build do |options|
     bump_type = options[:type] || "patch"
 
-    increment_version_number(bump_type: bump_type)
-    increment_build_number
+    increment_version_number_in_xcodeproj(bump_type: bump_type, scheme: ENV["SCHEME"])
+    increment_build_number_in_xcodeproj(scheme: ENV["SCHEME"])
 
-    version = get_version_number
-    build = get_build_number
+    version = get_version_number_from_xcodeproj(scheme: ENV["SCHEME"])
+    build = get_build_number_from_xcodeproj(scheme: ENV["SCHEME"])
 
     UI.message("Building v#{version} (#{build})")
 
@@ -21,11 +21,11 @@ platform :ios do
   lane :bump do |options|
     bump_type = options[:type] || "patch"
 
-    increment_version_number(bump_type: bump_type)
-    increment_build_number
+    increment_version_number_in_xcodeproj(bump_type: bump_type, scheme: ENV["SCHEME"])
+    increment_build_number_in_xcodeproj(scheme: ENV["SCHEME"])
 
-    version = get_version_number
-    build = get_build_number
+    version = get_version_number_from_xcodeproj(scheme: ENV["SCHEME"])
+    build = get_build_number_from_xcodeproj(scheme: ENV["SCHEME"])
 
     commit_version_bump(
       message: "chore: bump version to #{version} (#{build})",

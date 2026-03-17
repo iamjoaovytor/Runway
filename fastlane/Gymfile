@@ -1,10 +1,12 @@
 scheme(ENV["SCHEME"] || "App")
-export_method("app-store")
+export_method(ENV["EXPORT_METHOD"] || "app-store")
 
 output_directory("./build")
 output_name("App")
 
 clean(true)
 include_bitcode(false)
+
+skip_package_ipa(ENV["SKIP_EXPORT"] == "true")
 
 xcargs("-allowProvisioningUpdates")
