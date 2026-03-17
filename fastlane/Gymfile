@@ -5,7 +5,6 @@ output_directory("./build")
 output_name("App")
 
 clean(true)
-include_bitcode(false)
 
 skip_package_ipa(ENV["SKIP_EXPORT"] == "true")
 
