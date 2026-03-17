@@ -1,0 +1,26 @@
+# Environment
+.env
+.env.local
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Build
+build/
+*.ipa
+*.dSYM.zip
+
+# Ruby
+vendor/bundle
+.bundle
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
