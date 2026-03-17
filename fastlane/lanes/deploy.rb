@@ -3,7 +3,7 @@ platform :ios do
   lane :deploy_beta do
     certificates_sync
 
-    increment_build_number
+    increment_build_number_in_xcodeproj(scheme: ENV["SCHEME"])
     build_app
 
     changelog = changelog_from_git_commits(
@@ -17,8 +17,8 @@ platform :ios do
       notify_external_testers: false
     )
 
-    version = get_version_number
-    build = get_build_number
+    version = get_version_number_from_xcodeproj(scheme: ENV["SCHEME"])
+    build = get_build_number_from_xcodeproj(scheme: ENV["SCHEME"])
 
     if ENV["SLACK_WEBHOOK_URL"]
       slack(
@@ -39,7 +39,7 @@ platform :ios do
   lane :deploy_release do |options|
     certificates_sync
 
-    increment_build_number
+    increment_build_number_in_xcodeproj(scheme: ENV["SCHEME"])
     build_app
 
     upload_to_app_store(
@@ -52,8 +52,8 @@ platform :ios do
       }
     )
 
-    version = get_version_number
-    build = get_build_number
+    version = get_version_number_from_xcodeproj(scheme: ENV["SCHEME"])
+    build = get_build_number_from_xcodeproj(scheme: ENV["SCHEME"])
 
     if ENV["SLACK_WEBHOOK_URL"]
       slack(
