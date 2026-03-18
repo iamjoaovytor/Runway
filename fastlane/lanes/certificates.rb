@@ -8,7 +8,10 @@ platform :ios do
   desc "Sync certificates (read-only, safe for CI)"
   lane :certificates_sync do
     args = { type: "appstore", readonly: is_ci }
-    args[:keychain_name] = "runway_ci" if ENV["CI"]
+    if ENV["CI"]
+      args[:keychain_name] = KEYCHAIN_NAME
+      args[:keychain_password] = KEYCHAIN_PASSWORD
+    end
     match(args)
   end
 
