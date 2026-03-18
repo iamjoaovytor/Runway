@@ -59,7 +59,7 @@ jobs:
           key: ${{ runner.os }}-derived-data-${{ hashFiles('**/*.xcodeproj/project.pbxproj', '**/Package.resolved') }}
           restore-keys: ${{ runner.os }}-derived-data-
 
-      - name: Deploy to TestFlight
+      - name: Deploy via CI pipeline
         env:
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           APPLE_ID: ${{ secrets.APPLE_ID }}

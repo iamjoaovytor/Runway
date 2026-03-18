@@ -48,7 +48,7 @@ platform :ios do
     UI.header("Runway Health Check")
 
     # Verify environment
-    required_vars = %w[APP_IDENTIFIER APPLE_ID TEAM_ID]
+    required_vars = %w[APP_IDENTIFIER APPLE_ID TEAM_ID SCHEME XCODEPROJ MATCH_GIT_URL]
     missing = required_vars.select { |var| ENV[var].nil? || ENV[var].empty? }
 
     if missing.any?

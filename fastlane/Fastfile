@@ -11,10 +11,6 @@ import "lanes/monitoring.rb"
 import "lanes/ci.rb"
 
 platform :ios do
-  before_all do
-    setup_ci if ENV["CI"]
-  end
-
   after_all do |lane|
     clean_build_artifacts
   end

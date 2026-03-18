@@ -7,7 +7,9 @@ platform :ios do
 
   desc "Sync certificates (read-only, safe for CI)"
   lane :certificates_sync do
-    match(type: "appstore", readonly: is_ci)
+    args = { type: "appstore", readonly: is_ci }
+    args[:keychain_name] = "runway_ci" if ENV["CI"]
+    match(args)
   end
 
   desc "Nuke and regenerate all certificates (use with caution)"
