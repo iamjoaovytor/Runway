@@ -17,7 +17,7 @@ Add these in your repo's Settings > Secrets and variables > Actions:
 | `MATCH_GIT_URL` | Match certificates repo URL |
 | `MATCH_PASSWORD` | Match encryption password |
 | `MATCH_GIT_BASIC_AUTHORIZATION` | Base64 `username:token` for git |
-| `FASTLANE_APP_SPECIFIC_PASSWORD` | App-specific password for Apple ID |
+| `FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD` | App-specific password for Apple ID |
 | `SLACK_WEBHOOK_URL` | (Optional) Slack webhook for notifications |
 
 ### How It Works
@@ -30,7 +30,7 @@ Add these in your repo's Settings > Secrets and variables > Actions:
 1. Go to [appleid.apple.com](https://appleid.apple.com)
 2. Sign in > Security > App-Specific Passwords
 3. Generate a new password
-4. Add it as `FASTLANE_APP_SPECIFIC_PASSWORD` secret
+4. Add it as `FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD` secret
 
 ### Custom Triggers
 

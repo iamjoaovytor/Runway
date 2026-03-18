@@ -14,6 +14,7 @@ platform :ios do
       commits_count: 10,
       pretty: "- %s"
     )
+    changelog = "No recent changes" if changelog.to_s.strip.empty?
 
     upload_to_testflight(
       changelog: changelog,
@@ -54,6 +55,7 @@ platform :ios do
       commits_count: 10,
       pretty: "- %s"
     )
+    changelog = "No recent changes" if changelog.to_s.strip.empty?
 
     upload_to_app_store(
       submit_for_review: options.fetch(:submit, true),
