@@ -1,8 +1,8 @@
 platform :ios do
   desc "Post-deploy monitoring and verification"
   lane :monitor do
-    version = get_version_number
-    build = get_build_number
+    version = get_version_number_from_xcodeproj(scheme: ENV["SCHEME"])
+    build = get_build_number_from_xcodeproj(scheme: ENV["SCHEME"])
 
     UI.header("Monitoring v#{version} (#{build})")
 

@@ -1,12 +1,17 @@
+require "securerandom"
+
 platform :ios do
+  KEYCHAIN_NAME = "runway_ci"
+  KEYCHAIN_PASSWORD = ENV.fetch("CI_KEYCHAIN_PASSWORD") { SecureRandom.hex(16) }
+
   desc "Full CI pipeline: sync certificates, build, and deploy"
   lane :ci do |options|
     UI.header("Runway CI Pipeline")
 
     begin
       create_keychain(
-        name: "runway_ci",
-        password: "runway_ci_password",
+        name: KEYCHAIN_NAME,
+        password: KEYCHAIN_PASSWORD,
         default_keychain: true,
         unlock: true,
         timeout: 3600,
@@ -23,7 +28,11 @@ platform :ios do
 
       UI.success("CI pipeline complete!")
     ensure
-      delete_keychain(name: "runway_ci") rescue nil
+      begin
+        delete_keychain(name: KEYCHAIN_NAME)
+      rescue => e
+        UI.important("Keychain cleanup failed: #{e.message}")
+      end
     end
   end
 
@@ -31,8 +40,8 @@ platform :ios do
   lane :ci_build do
     begin
       create_keychain(
-        name: "runway_ci",
-        password: "runway_ci_password",
+        name: KEYCHAIN_NAME,
+        password: KEYCHAIN_PASSWORD,
         default_keychain: true,
         unlock: true,
         timeout: 3600,
@@ -44,7 +53,11 @@ platform :ios do
 
       UI.success("CI build complete!")
     ensure
-      delete_keychain(name: "runway_ci") rescue nil
+      begin
+        delete_keychain(name: KEYCHAIN_NAME)
+      rescue => e
+        UI.important("Keychain cleanup failed: #{e.message}")
+      end
     end
   end
 end
